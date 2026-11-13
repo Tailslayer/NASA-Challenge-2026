@@ -1,0 +1,13 @@
+C:\Users\arnav\source\repos\Nasa Space App Story Moon and Mars\Nasa Space App Story Moon and Mars\bin\Debug\Nasa Space App Story Moon and Mars.exe.config
+C:\Users\arnav\source\repos\Nasa Space App Story Moon and Mars\Nasa Space App Story Moon and Mars\bin\Debug\Nasa Space App Story Moon and Mars.exe
+C:\Users\arnav\source\repos\Nasa Space App Story Moon and Mars\Nasa Space App Story Moon and Mars\bin\Debug\Nasa Space App Story Moon and Mars.pdb
+C:\Users\arnav\source\repos\Nasa Space App Story Moon and Mars\Nasa Space App Story Moon and Mars\obj\Debug\Nasa Space App Story Moon and Mars.csproj.AssemblyReference.cache
+C:\Users\arnav\source\repos\Nasa Space App Story Moon and Mars\Nasa Space App Story Moon and Mars\obj\Debug\Nasa_Space_App_Story_Moon_and_Mars.Form1.resources
+C:\Users\arnav\source\repos\Nasa Space App Story Moon and Mars\Nasa Space App Story Moon and Mars\obj\Debug\Nasa_Space_App_Story_Moon_and_Mars.Properties.Resources.resources
+C:\Users\arnav\source\repos\Nasa Space App Story Moon and Mars\Nasa Space App Story Moon and Mars\obj\Debug\Nasa Space App Story Moon and Mars.csproj.GenerateResource.cache
+C:\Users\arnav\source\repos\Nasa Space App Story Moon and Mars\Nasa Space App Story Moon and Mars\obj\Debug\Nasa Space App Story Moon and Mars.csproj.CoreCompileInputs.cache
+C:\Users\arnav\source\repos\Nasa Space App Story Moon and Mars\Nasa Space App Story Moon and Mars\obj\Debug\Nasa Space App Story Moon and Mars.exe
+C:\Users\arnav\source\repos\Nasa Space App Story Moon and Mars\Nasa Space App Story Moon and Mars\obj\Debug\Nasa Space App Story Moon and Mars.pdb
+C:\Users\arnav\source\repos\Nasa Space App Story Moon and Mars\Nasa Space App Story Moon and Mars\bin\Debug\Newtonsoft.Json.dll
+C:\Users\arnav\source\repos\Nasa Space App Story Moon and Mars\Nasa Space App Story Moon and Mars\bin\Debug\Newtonsoft.Json.xml
+C:\Users\arnav\source\repos\Nasa Space App Story Moon and Mars\Nasa Space App Story Moon and Mars\obj\Debug\Nasa Spa.958ABDBC.Up2Date
