@@ -13,12 +13,15 @@ namespace Nasa_Space_App_Story_Moon_and_Mars
     public class NasaApiService
     {
 
-        int year_start = 0;
-        int year_end = 0;
-        private static readonly HttpClient _httpClient = new HttpClient();
+        private static readonly HttpClient _httpClient = new HttpClient
+        {
+            Timeout = TimeSpan.FromSeconds(15)
+        };
 
         public async Task<List<BookPage>> FetchEquipmentPagesAsync(string searchTerm)
         {
+            int year_start = 1960;
+            int year_end = DateTime.UtcNow.Year;
             if (searchTerm == "APOLLO 11")
             {
                 year_start = 1968;
@@ -59,7 +62,11 @@ namespace Nasa_Space_App_Story_Moon_and_Mars
                     var linksArr = item["links"];
 
                     string title = dataObj?["title"]?.ToString() ?? "NASA Equipment";
-                    string description = dataObj?["description"]?.ToString() ?? "No description available for this artifact.";
+                    string description = dataObj?["description"]?.ToString();
+                    if (string.IsNullOrWhiteSpace(description))
+                    {
+                        description = "NASA has not provided a summary for this image.";
+                    }
                     string imageUrl = linksArr?[0]?["href"]?.ToString();
 
                     if (!string.IsNullOrEmpty(imageUrl))

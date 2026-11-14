@@ -1,0 +1,20 @@
+[
+  {
+    "Title": "Opportunity: A Long Journey on Mars",
+    "SearchTerm": "Opportunity rover",
+    "Story": "Opportunity landed on Mars in 2004 to search rocks and soil for clues about past water. Its cameras, spectrometers, and rock abrasion tool helped scientists study what the rocks were made of and how water had changed them. It found evidence of ancient environments that could have supported microbial life.\n\nDesigned to work for just 90 Martian days, Opportunity explored for more than 14 years and traveled over 45 kilometers. A planet-wide dust storm blocked sunlight from its solar panels in 2018. Its last signal reached Earth on June 10, 2018, and NASA declared the mission complete in February 2019. The silent rover and its instruments remain in Perseverance Valley on Mars.",
+    "SourceUrl": "https://science.nasa.gov/mission/mer-opportunity/"
+  },
+  {
+    "Title": "Spirit: A Broken Wheel Reveals a Clue",
+    "SearchTerm": "Spirit rover",
+    "Story": "Spirit landed in Mars' Gusev Crater in 2004 to investigate the planet's rocks and search for evidence of past water. Its cameras and instruments revealed that Mars had once been wetter. Even a broken wheel helped: as Spirit dragged it through the soil, it uncovered silica-rich material that scientists linked to ancient hot springs or steam vents.\n\nSpirit worked for more than six years, far beyond its planned 90-Martian-day mission. In 2009 it became stuck in soft soil near a feature called Home Plate. Unable to reach a good position for winter sunlight, it fell silent in March 2010. NASA ended attempts to contact it in May 2011. The rover remains there with its cameras, robotic arm, and scientific instruments.",
+    "SourceUrl": "https://science.nasa.gov/mission/mer-spirit/"
+  },
+  {
+    "Title": "Apollo 17: The Rover Left on the Moon",
+    "SearchTerm": "Apollo 17 lunar rover",
+    "Story": "In December 1972, astronauts Eugene Cernan and Harrison Schmitt used a lunar rover to explore the Moon's Taurus-Littrow Valley. The vehicle helped them reach sites for geological investigation and collect lunar samples for study on Earth. Those samples gave scientists material for investigating the Moon's history.\n\nWhen the astronauts left, the rover stayed behind. Its television camera, controlled from Earth, followed their lunar module as it lifted off on December 14. The rover remains on the Moon as inactive hardware, alongside other equipment left at the landing site. Its journey ended there, but the samples brought home preserved the scientific value of the exploration it made possible.",
+    "SourceUrl": "https://www.nasa.gov/history/50-years-ago-apollo-17-heads-home-to-earth/"
+  }
+]

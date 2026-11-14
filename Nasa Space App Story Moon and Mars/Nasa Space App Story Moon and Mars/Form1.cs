@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -19,7 +20,7 @@ namespace Nasa_Space_App_Story_Moon_and_Mars
             SetupBookLayout();
 
             // Load initial NASA equipment story collection
-            LoadNasaBook("MOON");
+            LoadNasaBook();
         }
 
         private BookManager _bookManager;
@@ -30,6 +31,7 @@ namespace Nasa_Space_App_Story_Moon_and_Mars
         private PictureBox picEquipment;
         private Label lblPageTitle;
         private RichTextBox txtStory;
+        private LinkLabel lnkSource;
         private Button btnPrevious;
         private Button btnNext;
         private Label lblPageNumber;
@@ -69,7 +71,7 @@ namespace Nasa_Space_App_Story_Moon_and_Mars
             picEquipment = new PictureBox()
             {
                 Location = new Point(30, 90),
-                Size = new Size(350, 380),
+                Size = new Size(760, 240),
                 SizeMode = PictureBoxSizeMode.Zoom,
                 BackColor = Color.FromArgb(240, 240, 245),
                 BorderStyle = BorderStyle.FixedSingle
@@ -78,8 +80,8 @@ namespace Nasa_Space_App_Story_Moon_and_Mars
 
             txtStory = new RichTextBox()
             {
-                Location = new Point(400, 90),
-                Size = new Size(390, 380),
+                Location = new Point(30, 345),
+                Size = new Size(760, 145),
                 Font = new Font("Calibri", 11, FontStyle.Regular),
                 ForeColor = Color.FromArgb(50, 50, 50),
                 BackColor = Color.White,
@@ -88,6 +90,16 @@ namespace Nasa_Space_App_Story_Moon_and_Mars
                 ScrollBars = RichTextBoxScrollBars.Vertical
             };
             pnlBookCover.Controls.Add(txtStory);
+
+            lnkSource = new LinkLabel()
+            {
+                Text = "Summary adapted from NASA - read the source",
+                Location = new Point(30, 500),
+                AutoSize = true,
+                Visible = false
+            };
+            lnkSource.LinkClicked += LnkSource_LinkClicked;
+            pnlBookCover.Controls.Add(lnkSource);
 
             btnPrevious = new Button()
             {
@@ -121,15 +133,27 @@ namespace Nasa_Space_App_Story_Moon_and_Mars
             this.Controls.Add(btnNext);
         }
 
-        private async void LoadNasaBook(string searchTerm)
+        private async void LoadNasaBook()
         {
             lblPageTitle.Text = "Querying NASA Archives...";
-            txtStory.Text = $"Searching NASA image library for '{searchTerm}'...";
+            txtStory.Text = "Loading mission stories and finding their images in NASA's image library...";
             picEquipment.Image = null;
+            btnPrevious.Enabled = false;
+            btnNext.Enabled = false;
+            lnkSource.Visible = false;
 
-            // Fetch live pages asynchronously
-            await _bookManager.InitializeBookAsync(searchTerm);
-            DisplayCurrentPage();
+            try
+            {
+                await _bookManager.InitializeBookAsync();
+                if (IsDisposed) return;
+                DisplayCurrentPage();
+            }
+            catch (Exception ex)
+            {
+                if (IsDisposed) return;
+                lblPageTitle.Text = "Could not load mission stories";
+                txtStory.Text = "Check that MissionStories.json is included with the application.\n\n" + ex.Message;
+            }
         }
 
         private void DisplayCurrentPage()
@@ -139,10 +163,19 @@ namespace Nasa_Space_App_Story_Moon_and_Mars
 
             lblPageTitle.Text = page.Title;
             txtStory.Text = page.Story;
+            txtStory.AppendText("\n\n" + (string.IsNullOrEmpty(page.ImageUrl)
+                ? "NASA image unavailable. The mission story is still available above."
+                : "NASA image: " + page.ImageTitle));
+            txtStory.SelectionStart = 0;
+            txtStory.ScrollToCaret();
+            lnkSource.Tag = page.SourceUrl;
+            lnkSource.Visible = !string.IsNullOrWhiteSpace(page.SourceUrl);
             lblPageNumber.Text = $"Page {_bookManager.CurrentIndex + 1} of {_bookManager.TotalPages}";
 
             try
             {
+                picEquipment.CancelAsync();
+                picEquipment.Image = null;
                 if (!string.IsNullOrEmpty(page.ImageUrl))
                 {
                     picEquipment.LoadAsync(page.ImageUrl);
@@ -169,6 +202,22 @@ namespace Nasa_Space_App_Story_Moon_and_Mars
         {
             _bookManager.NextPage();
             DisplayCurrentPage();
+        }
+
+        private void LnkSource_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            string sourceUrl = lnkSource.Tag as string;
+            if (string.IsNullOrWhiteSpace(sourceUrl)) return;
+
+            try
+            {
+                Process.Start(new ProcessStartInfo(sourceUrl) { UseShellExecute = true });
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(this, "Could not open the browser. NASA source:\n" + sourceUrl,
+                    "NASA Source", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void BtnPrevious_Click(object sender, EventArgs e)

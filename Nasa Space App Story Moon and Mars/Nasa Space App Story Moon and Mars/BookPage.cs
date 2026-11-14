@@ -11,5 +11,8 @@ namespace Nasa_Space_App_Story_Moon_and_Mars
             public string Title { get; set; }
             public string Story { get; set; }
             public string ImageUrl { get; set; }
+            public string ImageTitle { get; set; }
+            public string SearchTerm { get; set; }
+            public string SourceUrl { get; set; }
     }
 }
